@@ -1,4 +1,5 @@
 {
+	"name": "lamps-cli",
 	"version": "1.0.0",
 	"description": "",
 	"main": "out/index.js",
