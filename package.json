@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "out/index.js",
 	"scripts": {
-		"postinstall": "npm run build",
+		"prepare": "tsc",
 		"start": "ts-node --transpile-only src/index.ts",
 		"build": "tsc",
 		"lint": "tsc --noEmit",
@@ -18,7 +18,9 @@
 	"license": "ISC",
 	"dependencies": {
 		"axios": "^0.21.1",
-		"yargs": "^17.0.1",
+		"yargs": "^17.0.1"
+	},
+	"devDependencies": {
 		"@types/node": "^16.4.1",
 		"@types/yargs": "^17.0.2",
 		"prettier": "^2.3.2",
