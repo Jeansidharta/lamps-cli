@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import yargs from 'yargs';
 import { turnOff } from './commands/turnoff';
 import { turnOn } from './commands/turnon';
