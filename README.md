@@ -1,3 +1,3 @@
-# CLI application with typescript template
+# Lamps CLI
 
-This is not yet finished, I'm still creating something better
+This application is not really meant for the public
