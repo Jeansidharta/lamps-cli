@@ -17,6 +17,11 @@ export function getVerbosity() {
 }
 
 export function logIfEnoughVerbosity(minimumVerbosity: number, ...messages: string[]) {
+	if (minimumVerbosity < 0)
+		throw new Error('Negative verbose levels should never be used for logging');
+	if (minimumVerbosity > MAXIMUM_VERBOSITY)
+		throw new Error('Received a logIfEnouoghVerbosity level higher than maximum verbosity level');
+
 	if (minimumVerbosity <= verbosity) console.log(...messages);
 }
 

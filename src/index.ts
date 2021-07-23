@@ -1,5 +1,6 @@
 import yargs from 'yargs';
-import { test } from './commands/test';
+import { turnOff } from './commands/turnoff';
+import { turnOn } from './commands/turnon';
 import { handleVerbosity, MAXIMUM_VERBOSITY } from './verbosity';
 
 const { argv } = yargs
@@ -11,12 +12,29 @@ const { argv } = yargs
 		description: `The verbosity level of the command. Number. Default is 0. Higher numbers makes more verbosity. Lower numbers, less verbosity. A verbosity smaller than 0 is silent. Maximum verbosity level is ${MAXIMUM_VERBOSITY}.`,
 	})
 	.command(
-		'test <requiredArg> [optionalArg]',
-		'forces worker process to check for an update on all hostnames',
+		'turnon [lampnames..]',
+		'Turns on a list of lamps',
 		() => {},
-		yargs => {
+		async yargs => {
 			handleVerbosity(yargs);
-			test(yargs);
+			try {
+				await turnOn(yargs);
+			} catch (e) {
+				console.log(e.message);
+			}
+		},
+	)
+	.command(
+		'turnoff [lampnames..]',
+		'Turns off a list of lamps',
+		() => {},
+		async yargs => {
+			handleVerbosity(yargs);
+			try {
+				await turnOff(yargs);
+			} catch (e) {
+				console.log(e.message);
+			}
 		},
 	)
 	.demandCommand(1, 1) // demmand at least one command
